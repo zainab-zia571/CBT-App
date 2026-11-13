@@ -24,48 +24,112 @@
   <h1>Privacy Policy</h1>
   <p class="updated">Last updated: November 2026</p>
 
-  <h2>Introduction</h2>
-  <p>Reflection Studio is a local-first CBT (Cognitive Behavioural Therapy) self-help app. This policy explains what information the app handles, where it's stored, and what — deliberately — never leaves your device unless you explicitly choose to send it.</p>
+  <h2>1. Introduction</h2>
+  <p>Reflection Studio ("the app") is a local-first CBT (Cognitive Behavioural Therapy) self-help app for Android, developed and operated by an independent developer. This Privacy Policy explains what information the app processes, where it is stored, what — if anything — leaves your device, and what controls you have. It applies to the app itself and to the small backend service described in Section 4, which exists solely to support the app's optional AI feature.</p>
 
-  <h2>Information We Collect</h2>
-  <p>Reflection Studio does not collect, transmit, or have any ability to see the content you enter into the app — thought records, journal entries, mood check-ins, habits, or any other self-help content you create. There are no user accounts, no sign-in, and no server that stores your personal entries. Everything you write stays on your device in a local database, unless you explicitly export it yourself.</p>
-
-  <h2>Financial Data</h2>
-  <p>Reflection Studio does not collect, process, or store any financial or payment information. If the app offers any paid features in the future, payment is handled entirely by the Google Play billing system, which has its own privacy practices — this app never sees your payment details.</p>
-
-  <h2>Device Information</h2>
-  <p>The app does not collect analytics, crash reports, advertising identifiers, or device telemetry of any kind. No analytics SDK, ad SDK, or crash-reporting SDK is included in the app.</p>
-
-  <h2>Permissions</h2>
+  <h2>2. Information We Collect</h2>
+  <p>Reflection Studio has no user accounts, no sign-in, and no server-side database of its own for your personal content. There are three categories of information relevant to this policy:</p>
   <ul>
-    <li><strong>Internet / Network state</strong> — used only if you choose to use the optional AI assistance feature (see below). No other feature in the app requires internet access.</li>
-    <li><strong>Notifications</strong> — used only if you turn on the optional daily reminder, and requested only at that point, never on first launch.</li>
-    <li><strong>Biometric / device credential</strong> — used only if you turn on the optional App Lock feature, to unlock the app itself. Reflection Studio never receives or stores your fingerprint, face data, or PIN — that is handled entirely by your device's operating system.</li>
+    <li><strong>Information you enter</strong> — the reflections, check-ins, and records described in Section 3, which you type or select directly into the app.</li>
+    <li><strong>Information stored locally on your device</strong> — everything in the bullet above, plus your app settings (language, theme, reminder times, app-lock preference), all kept in a private, app-only database and settings file on your device (see Section 7).</li>
+    <li><strong>Information sent to an external service</strong> — this happens in exactly two situations: (a) you explicitly use the optional AI assistance feature (Section 4), or (b) you browse or open something in the YouTube Video Library (Section 10). No other feature in the app sends anything anywhere.</li>
+  </ul>
+  <p>We do not claim the app collects zero data of any kind — it is honest to say that nothing you type is collected, retained, or visible to us unless one of those two specific, user-initiated actions above occurs.</p>
+
+  <h2>3. Personal and Reflection Data</h2>
+  <p>Depending on which tools you use, Reflection Studio can store the following on your device, in a local, private database:</p>
+  <ul>
+    <li>Mood check-ins</li>
+    <li>Thought Records</li>
+    <li>Coping/breathing session records</li>
+    <li>Journal entries</li>
+    <li>Evidence Examination entries</li>
+    <li>CBT Reality Lab experiments (predictions and outcomes)</li>
+    <li>My Pattern Map data (the same reflections above, viewed as Situation → Thought → Emotion → Behaviour → Outcome)</li>
+    <li>Habits and habit completions</li>
+    <li>Guided Program progress</li>
+    <li>Saved AI results (only the ones you choose to save — see Section 4)</li>
+    <li>Daily Plan completions</li>
+    <li>PHQ-9 and GAD-7 assessment responses and scores</li>
+    <li>Reminder preferences (type, time, days)</li>
+    <li>Audio-track completion status (which bundled tracks you've finished)</li>
+    <li>YouTube favorites and "Recently Opened" records (see Section 10)</li>
+  </ul>
+  <p>All of the above is stored <strong>only</strong> in the app's local database and settings file on your device (Section 7). None of it is transmitted anywhere, synced to any cloud service, or visible to us, unless you explicitly export it yourself (Section 8) or explicitly submit specific text to the optional AI feature (Section 4) — nothing else in this list is ever sent anywhere automatically.</p>
+
+  <h2>4. AI-Assisted Features</h2>
+  <p>Reflection Studio includes <strong>optional</strong> AI-assisted tools (for example, AI Thought Analysis, AI Fear &amp; Experiment Planner, and AI Journal Reflection). These are off by default and require your explicit, informed consent — shown via an in-app consent screen — before first use.</p>
+  <p>How it actually works, verified against the current implementation:</p>
+  <ul>
+    <li><strong>You choose what is sent.</strong> Only the exact text you explicitly select and confirm sending is transmitted — never your full journal, mood history, or any other saved content you haven't specifically chosen for that request. Each request is capped at 4,000 characters.</li>
+    <li><strong>Architecture.</strong> Your device does not talk to OpenAI directly. It sends your selected text to our own small backend service (a Cloudflare Worker that we operate), which forwards it to OpenAI's API for processing and returns the result to the app. The real OpenAI API key lives only on our backend and is never present in the app or its installed package.</li>
+    <li><strong>What our backend does with your request.</strong> Our backend does not write your request or OpenAI's response to any database or log. The only thing it stores is a short-lived rate-limit counter keyed to a hashed version of your IP address (not your text), which automatically expires. If a request to OpenAI fails, our backend logs only the error type and status code for debugging — never the content of your request or OpenAI's reply.</li>
+    <li><strong>What OpenAI does with it.</strong> OpenAI, a third-party AI provider, processes the text you send under its own applicable terms and privacy/data-handling policies, which govern what happens on OpenAI's side once it receives your request. We do not control OpenAI's retention practices and encourage you to review OpenAI's own policies if you want details beyond what we can verify here.</li>
+    <li><strong>What the app stores afterward.</strong> The AI's response is shown to you in the app. It is saved to your local device database only if you choose to save it; otherwise it is not retained anywhere by the app.</li>
+    <li><strong>Turning it off.</strong> You can disable AI assistance at any time in Settings. Every other tool in the app works fully offline, with or without this feature.</li>
   </ul>
 
-  <h2>Data Storage</h2>
-  <p>All of your entries are stored locally on your device in a private app database. The app's data is explicitly excluded from Android's automatic cloud backup system, so your entries are not copied off-device by the operating system. Reflection Studio has no server and no cloud database of its own.</p>
+  <h2>5. Device and Technical Information</h2>
+  <p>Reflection Studio does not include any analytics SDK, crash-reporting SDK, advertising SDK, or device-telemetry SDK of any kind. We do not collect device identifiers, advertising IDs, usage analytics, or crash reports. The app's only third-party network-facing libraries are a plain HTTP client used for the AI proxy calls described in Section 4, and an image-loading library used only to display YouTube thumbnails as described in Section 10.</p>
 
-  <h2>Backup &amp; Restore</h2>
-  <p>You can manually export your data to a file you choose, and import it back in later (for example, when moving to a new device). Export and import are entirely under your control — the app never does this automatically or without your action.</p>
+  <h2>6. Permissions</h2>
+  <p>Reflection Studio requests the following Android permissions, and no others:</p>
+  <ul>
+    <li><strong>Internet access and network state</strong> — used only for the two features described in Section 4 (AI assistance) and Section 10 (YouTube Video Library thumbnails and external playback). No other feature requires or uses internet access.</li>
+    <li><strong>Notifications</strong> — used only if you turn on the optional reminder feature, and the system permission is requested only at that point, never on first launch. Reminder notifications never reveal what you've recorded.</li>
+    <li><strong>Biometric authentication</strong> — used only if you turn on the optional App Lock feature, to gate access to the app using your device's own fingerprint, face, or PIN/pattern unlock. Reflection Studio never receives, sees, or stores your biometric data or device credential itself — that is handled entirely by the Android operating system.</li>
+    <li><strong>Foreground service (media playback)</strong> — used to keep bundled audio playing with lock-screen/notification controls while you use other apps. It does not involve any network access on its own.</li>
+  </ul>
 
-  <h2>Third-Party Services</h2>
-  <p>Reflection Studio includes <strong>optional</strong> AI-assisted tools (Thought Analysis, Fear &amp; Experiment Planner, Journal Reflection). These are off by default and require your explicit, informed consent before first use. When you use one of these tools, only the exact text you choose to submit — and nothing else from your journal, mood history, or any other saved content — is sent to our backend, which forwards it to OpenAI, our third-party AI provider, for processing. You see exactly what will be sent and must explicitly confirm before anything is transmitted, every time. Our backend does not log or store the content of what you send. By OpenAI's own current policy, text submitted through its API is not used to train its models and is retained only briefly for abuse monitoring. You can turn AI assistance off at any time in Settings.</p>
+  <h2>7. Data Storage and Security</h2>
+  <p>Your entries are stored in a local database and a local settings file, both private to the app on your device (not accessible to other apps under normal Android sandboxing). The app has no server and no cloud database of its own, and its data is explicitly excluded from Android's automatic cloud backup system.</p>
+  <p>To be precise about what protection is actually in place: this local storage relies on standard Android app-private storage and sandboxing, not on additional device-level encryption added by the app itself (the app does not use the Android Keystore or an encrypted-database layer beyond what the operating system itself provides for app-private files). The optional App Lock feature controls who can open the app on your device — it is an access gate, not data-at-rest encryption, and it is not a substitute for your device's own screen lock and security settings. As with any locally stored app data, if your device itself is compromised, lost unlocked, or its storage is extracted, local protections have limits.</p>
 
-  <h2>Security</h2>
-  <p>Reflection Studio offers an optional App Lock (fingerprint/face/PIN, using your device's own security) and an option to hide app content from the Android Recents screen and screenshots. No method of local storage can be guaranteed to be invulnerable on a lost, stolen, or compromised device, and these features are not a substitute for your device's own security settings.</p>
+  <h2>8. Backup, Export and Restore</h2>
+  <p>You can export all of your locally stored data to a JSON file of your choosing at any time, using Android's standard "save a copy" file picker — nothing is exported automatically or in the background. You can later import that file back in (on the same or a different device) using the same manual, user-initiated flow; imported records are added alongside whatever is already stored, not merged or deduplicated against it. Export and import are entirely local file operations — no server is involved at any point.</p>
 
-  <h2>User Rights</h2>
-  <p>You can export all of your data, or permanently delete all of it from the device, at any time from within the app. Because there is no account and no server-side copy, deleting your data from the app deletes it completely — there is nothing left for us to retain, because we never had it.</p>
+  <h2>9. Audio Library</h2>
+  <p>The app's bundled relaxation/ambient audio tracks are real audio files packaged inside the app itself — they do not stream from any server, and playing them does not involve any network request. All bundled tracks are CC0 1.0 Universal (public domain) recordings sourced from Freesound.org; no attribution is legally required, though the app credits the original creators as a courtesy. The app locally records only whether you finished a given track, to show a completion indicator — this never leaves your device.</p>
 
-  <h2>Children's Privacy</h2>
-  <p>Reflection Studio is not directed at children and does not knowingly collect personal information from children. The app itself collects no personal information from any user, of any age, beyond what you choose to type into your own local entries.</p>
+  <h2>10. YouTube Video Library</h2>
+  <p>Reflection Studio includes a curated library of links to real, individually reviewed videos on YouTube (for example, on anxiety, sleep, and CBT topics). This feature works as follows:</p>
+  <ul>
+    <li>No video is hosted, downloaded, embedded, or re-streamed by this app. Tapping "Watch Video" opens the video externally, in the YouTube app (if installed) or your device's browser, using Android's standard external-link mechanism — you leave Reflection Studio to watch it.</li>
+    <li>Thumbnail images shown while you browse the library are loaded live from YouTube's own public image servers (img.youtube.com) as the screen renders. This means your device's IP address reaches Google's servers simply by browsing the library — not only when you tap "Watch Video." This is disclosed directly on that screen in the app as well.</li>
+    <li>Once you leave the app to watch a video, YouTube and Google may collect information under their own privacy policies, which Reflection Studio does not control. We encourage you to review YouTube's and Google's privacy policies separately.</li>
+    <li>The app records locally, on your device only, that you tapped "Watch Video" and the external app/browser opened successfully — labeled "Recently Opened." This is honestly limited: Reflection Studio has no way of knowing whether you actually watched the video, or how much of it, once it hands off to YouTube. The app never shows a completion percentage or a "watched" badge for YouTube videos — only that one was opened, and when.</li>
+    <li>Favoriting a video, and your Recently Opened list, are stored only in your local app database, included in the export/import/Delete All tools described in Sections 8 and 13, and are never sent to YouTube or used to personalize anything on YouTube's side.</li>
+    <li>None of your journal entries, mood data, Thought Records, assessment (PHQ-9/GAD-7) results, or AI results are ever used to select videos, and none of that content is ever sent to YouTube.</li>
+  </ul>
 
-  <h2>Changes to This Policy</h2>
-  <p>If this policy changes in a way that affects what data leaves your device, the in-app consent screen for the relevant feature will require you to re-confirm before you can continue using it.</p>
+  <h2>11. Third-Party Services</h2>
+  <p>The only third parties involved in Reflection Studio's operation are:</p>
+  <ul>
+    <li><strong>OpenAI</strong> — processes text you explicitly submit through the optional AI assistance feature, via our backend proxy, as described in Section 4. See <a href="https://openai.com/policies/" target="_blank" rel="noopener">OpenAI's own policies</a> for their data-handling practices.</li>
+    <li><strong>Google / YouTube</strong> — serves video thumbnail images and hosts the videos you may choose to open externally, as described in Section 10. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</li>
+    <li><strong>Our own backend proxy</strong> (a Cloudflare Worker we operate) — relays AI requests to OpenAI as described in Section 4. It does not log or store your request content.</li>
+  </ul>
+  <p>Reflection Studio does not include any analytics, advertising, or crash-reporting SDK from any other third party.</p>
 
-  <h2>Contact</h2>
-  <p>Questions about this policy can be sent via the <a href="contact.html">Contact page</a>.</p>
+  <h2>12. Children's Privacy</h2>
+  <p>Reflection Studio is a general self-help app and is not specifically directed at children. We do not knowingly design the app to collect personal information from children, and the app itself collects no personal information from any user, of any age, beyond what that person chooses to type into their own local entries. If you believe a child has used the app's optional AI or YouTube features in a way that concerns you, you can review and delete all local data at any time (Section 13), and we encourage a parent or guardian to supervise use of those optional, internet-connected features.</p>
+
+  <h2>13. User Rights and Data Control</h2>
+  <p>Because your data lives on your own device and we have no account system or server-side copy of it, you are already in direct control of it:</p>
+  <ul>
+    <li><strong>Access</strong> — everything you've recorded is visible to you directly within the app at any time.</li>
+    <li><strong>Export</strong> — you can save a full copy of your local data to a file you choose (Section 8).</li>
+    <li><strong>Import</strong> — you can restore or merge in a previously exported file (Section 8).</li>
+    <li><strong>Delete</strong> — you can permanently erase all app data from your device at any time from Settings. Because there is no server-side copy, this deletes it completely on our end too — there is nothing left for us to retain, because we never had it.</li>
+    <li><strong>Disable optional features</strong> — AI assistance, reminders, and App Lock can each be turned off independently in Settings.</li>
+  </ul>
+  <p>One limit we want to be upfront about: once text you've submitted to the AI feature has been processed by OpenAI (Section 4), or once you've opened a video on YouTube (Section 10), we cannot delete or control any information those external services may separately retain under their own policies — our Delete All tool only ever affected what was stored locally in the first place.</p>
+
+  <h2>14. Changes to This Policy</h2>
+  <p>We may update this Privacy Policy from time to time, for example as new features are added. If a change meaningfully affects what information leaves your device for an existing feature, the in-app consent screen for that feature will ask you to re-confirm before you can continue using it. We encourage you to review this page periodically.</p>
+
+  <h2>15. Contact</h2>
+  <p>Questions about this policy can be sent via the <a href="contact.html">Contact page</a>, or directly to <a href="mailto:zainabzia571@gmail.com">zainabzia571@gmail.com</a>.</p>
 </main>
 
 <footer>
